@@ -4,19 +4,16 @@ Aplicativo mobile desenvolvido em **React Native + Expo** com **TypeScript** par
 
 ---
 
-## 👤 Identificação do Aluno
-- **Nome:** [Preencha seu Nome Completo]
-- **RA:** [Preencha seu RA]
-- **Curso:** Desenvolvimento de Software / Análise e Desenvolvimento de Sistemas
-- **Disciplina:** Programação para Dispositivos Móveis
-- **Avaliação:** AV2 - Desafio Prático Individual (Peso 30%)
+## Identificação do Aluno
+- **Nome:** Carlos Alberto Yuiti Yamada
+- **RA:** 1710482421005
 
 ---
 
-## 📱 Sobre o Aplicativo
+## Sobre o Aplicativo
 O **"Minha Lista de Compras Inteligente"** auxilia os moradores do bairro a organizar suas compras de forma prática, conectando seus itens aos comércios locais cadastrados na **Vitrine do Bairro** (padarias, mercados, fruteiras, açougues e farmácias).
 
-### 🚀 Funcionalidades Implementadas
+### Funcionalidades Implementadas
 - [x] **Cadastro e Edição de Itens:** Adicione produtos com nome, preço unitário, quantidade, categoria e observações.
 - [x] **Associação ao Comércio Local:** Associe cada produto diretamente a um comerciante do bairro (ex: Seu Zé, Hortifruti da Terra).
 - [x] **Status "Comprado" / Pendente:** Marque itens como comprados diretamente na lista ou na tela de detalhes com feedback visual instantâneo.
@@ -27,7 +24,7 @@ O **"Minha Lista de Compras Inteligente"** auxilia os moradores do bairro a orga
 
 ---
 
-## 🏗️ Arquitetura e Estrutura do Projeto
+## Estrutura do Projeto
 
 O projeto segue estritamente a separação em camadas solicitada:
 
@@ -54,7 +51,7 @@ vitrine-do-bairro-av2/
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 - **React Native 0.88** & **Expo SDK 58**
 - **TypeScript 6.0** (Tipagem estrita para todas as interfaces e navegações)
 - **React Navigation 7** (`@react-navigation/native`, `@react-navigation/native-stack`, `@react-navigation/bottom-tabs`)
@@ -63,7 +60,7 @@ vitrine-do-bairro-av2/
 
 ---
 
-## 🏃 Como Rodar o Projeto
+## Como Rodar o Projeto
 
 ### Pré-requisitos
 - **Node.js** (versão 20 ou 22 recomendada)
@@ -94,32 +91,13 @@ vitrine-do-bairro-av2/
 
 ---
 
-## 🎯 Roteiro para a Defesa Técnica (5 Minutos)
-
-Durante a apresentação com o professor, utilize o roteiro abaixo:
-
-1. **Apresentação Geral (1 min):**
-   - Apresente o tema: *"Minha Lista de Compras Inteligente integrada à Vitrine do Bairro"*.
-   - Destaque o objetivo: permitir que moradores planejem gastos e comprem no comércio local com apoio do app.
-2. **Arquitetura e Boas Práticas (1 min):**
-   - Mostre a pasta `src/`: separação clara de `components`, `screens`, `services`, `hooks` e `types`.
-   - Explique o uso de TypeScript em todas as entidades (`Product`, `Business`, `RootStackParamList`).
-3. **Custom Hook e Gestão de Estado (1 min):**
-   - Apresente o custom hook `useShoppingList`: ele centraliza as regras de negócio, carregamento assíncrono, cálculo de totais (`totalEstimated`, `totalPurchased`, `totalPending`) e filtros por comerciante.
-4. **Demonstração Prática no Celular/Emulador (1.5 min):**
-   - **Telas navegáveis:** Navegue entre a tela de comércios (`Home`), a lista de compras (`ProductList`), formulário (`ProductForm`) e detalhes (`ProductDetail`).
-   - **Passagem de parâmetros:** Clique em um comerciante e adicione um produto vinculado a ele.
-   - **Cálculo automático:** Mostre o total estimado sendo atualizado e mudando ao marcar como comprado.
-   - **Validação de formulário:** Tente salvar com campos vazios para demonstrar os feedbacks visuais de erro.
-5. **Persistência e Offline-First (0.5 min):**
-   - Feche o app no multitarefa e reabra para provar que a lista persiste no AsyncStorage.
-   - Explique o fallback inteligente em `api.ts` caso o dispositivo esteja sem internet.
-
----
-
-## 📷 Screenshots
+## Screenshots
 *(Tire capturas de tela do app rodando no Expo Go e adicione nesta seção caso desejado)*
 - Tela Inicial (Vitrine de Comércios)
+![alt text](image-1.png)
 - Tela Minha Lista de Compras com Totais Calculados
+![alt text](image-2.png)
 - Tela de Cadastro com Validação de Erros
+![alt text](image-3.png)
 - Tela de Detalhes do Item
+![alt text](image-4.png)
