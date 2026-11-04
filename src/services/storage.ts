@@ -1,16 +1,15 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Product } from '../types';
+import { Product, Business } from '../types';
 
 const PRODUCTS_KEY = '@vitrine:products';
-const SHOPPING_LIST_KEY = '@vitrine:shopping_list';
+const BUSINESSES_KEY = '@vitrine:businesses';
 
 export const storageService = {
   async getProducts(): Promise<Product[]> {
     try {
       const json = await AsyncStorage.getItem(PRODUCTS_KEY);
       return json ? JSON.parse(json) : [];
-    } catch (error) {
-      console.error('Erro ao carregar produtos:', error);
+    } catch {
       return [];
     }
   },
@@ -18,8 +17,8 @@ export const storageService = {
   async saveProducts(products: Product[]): Promise<void> {
     try {
       await AsyncStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
-    } catch (error) {
-      console.error('Erro ao salvar produtos:', error);
+    } catch {
+      // Ignora silenciosamente ou trata em camadas superiores
     }
   },
 
@@ -44,21 +43,20 @@ export const storageService = {
     await storageService.saveProducts(filtered);
   },
 
-  async getShoppingList(): Promise<string[]> {
+  async getCachedBusinesses(): Promise<Business[]> {
     try {
-      const json = await AsyncStorage.getItem(SHOPPING_LIST_KEY);
+      const json = await AsyncStorage.getItem(BUSINESSES_KEY);
       return json ? JSON.parse(json) : [];
-    } catch (error) {
-      console.error('Erro ao carregar lista:', error);
+    } catch {
       return [];
     }
   },
 
-  async saveShoppingList(productIds: string[]): Promise<void> {
+  async cacheBusinesses(businesses: Business[]): Promise<void> {
     try {
-      await AsyncStorage.setItem(SHOPPING_LIST_KEY, JSON.stringify(productIds));
-    } catch (error) {
-      console.error('Erro ao salvar lista:', error);
+      await AsyncStorage.setItem(BUSINESSES_KEY, JSON.stringify(businesses));
+    } catch {
+      // Falha no cache não interrompe o fluxo
     }
   },
 };

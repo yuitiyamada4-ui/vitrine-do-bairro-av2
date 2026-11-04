@@ -1,10 +1,12 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from '../screens/HomeScreen';
 import { ProductListScreen } from '../screens/ProductListScreen';
 import { ProductFormScreen } from '../screens/ProductFormScreen';
+import { ProductDetailScreen } from '../screens/ProductDetailScreen';
 import { colors } from '../theme/colors';
 import { RootStackParamList } from '../types';
 
@@ -13,7 +15,13 @@ const Tab = createBottomTabNavigator();
 
 function HomeStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: colors.secondary },
+        headerTintColor: colors.white,
+        headerTitleStyle: { fontWeight: '700' },
+      }}
+    >
       <Stack.Screen
         name="Home"
         component={HomeScreen}
@@ -23,19 +31,45 @@ function HomeStack() {
         name="ProductList"
         component={ProductListScreen}
         options={{
-          title: 'Lista de Compras',
-          headerStyle: { backgroundColor: colors.secondary },
-          headerTintColor: colors.white,
+          headerShown: false,
         }}
       />
       <Stack.Screen
         name="ProductForm"
         component={ProductFormScreen}
         options={{
-          title: 'Produto',
-          headerStyle: { backgroundColor: colors.secondary },
-          headerTintColor: colors.white,
+          headerShown: false,
         }}
+      />
+      <Stack.Screen
+        name="ProductDetail"
+        component={ProductDetailScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function ListStack() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen
+        name="ProductList"
+        component={ProductListScreen}
+      />
+      <Stack.Screen
+        name="ProductForm"
+        component={ProductFormScreen}
+      />
+      <Stack.Screen
+        name="ProductDetail"
+        component={ProductDetailScreen}
       />
     </Stack.Navigator>
   );
@@ -46,28 +80,41 @@ export const AppNavigator: React.FC = () => {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
+          headerShown: false,
           tabBarActiveTintColor: colors.primary,
           tabBarInactiveTintColor: colors.textLight,
           tabBarStyle: {
             backgroundColor: colors.white,
             borderTopColor: colors.border,
-            paddingBottom: 8,
-            paddingTop: 8,
+            paddingBottom: 6,
+            paddingTop: 6,
             height: 60,
           },
-          headerStyle: { backgroundColor: colors.secondary },
-          headerTintColor: colors.white,
+          tabBarLabelStyle: {
+            fontSize: 12,
+            fontWeight: '600',
+          },
         }}
       >
         <Tab.Screen
           name="Início"
           component={HomeStack}
-          options={{ tabBarLabel: 'Início' }}
+          options={{
+            tabBarLabel: 'Comércios',
+            tabBarIcon: ({ color }) => (
+              <Text style={{ fontSize: 20 }}>🏪</Text>
+            ),
+          }}
         />
         <Tab.Screen
-          name="Lista"
-          component={ProductListScreen}
-          options={{ tabBarLabel: 'Minha Lista' }}
+          name="MinhaListaTab"
+          component={ListStack}
+          options={{
+            tabBarLabel: 'Minha Lista',
+            tabBarIcon: ({ color }) => (
+              <Text style={{ fontSize: 20 }}>🛒</Text>
+            ),
+          }}
         />
       </Tab.Navigator>
     </NavigationContainer>

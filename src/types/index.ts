@@ -1,13 +1,3 @@
-export interface Product {
-  id: string;
-  name: string;
-  price: number;
-  description?: string;
-  category: string;
-  quantity: number;
-  isPurchased: boolean;
-}
-
 export interface Business {
   id: string;
   name: string;
@@ -16,8 +6,21 @@ export interface Business {
   phone?: string;
 }
 
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  description?: string;
+  category: string;
+  quantity: number;
+  isPurchased: boolean;
+  businessId?: string;
+  businessName?: string;
+}
+
 export type RootStackParamList = {
   Home: undefined;
-  ProductList: { businessId?: string };
-  ProductForm: { productId?: string; businessId?: string };
+  ProductList: { businessId?: string; businessName?: string } | undefined;
+  ProductForm: { productId?: string; businessId?: string; businessName?: string } | undefined;
+  ProductDetail: { productId: string };
 };
